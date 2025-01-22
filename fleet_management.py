@@ -43,14 +43,27 @@ class Vehicle(ABC):
 
 # Inherits from Vehicle. Is the Parent Class for Car, CargoTruck and Motorcycle
 class Motorized(Vehicle):
-    def __init__(self, id, license_plate, brand, model, fuel_type):
+    def __init__(self, id, license_plate, brand, model, fuel_type, mileage):
         # super().__init__ initializes the attributes from the Parent Class
         super().__init__(id, license_plate, brand, model)
 
         if not isinstance(fuel_type, str):
             raise ValueError("Fuel must be Petrol, Diesel or Electric.")
 
+        if not isinstance(mileage, int) or mileage < 0:
+            raise ValueError("Mileage must pe a positive number.")
+
         self.fuel_type = fuel_type
+        self.current_mileage = mileage
+        self.mileage = mileage
+
+    def update_mileage(self, new_user_mileage):
+        if not isinstance(new_user_mileage, int) or new_user_mileage < 0:
+            raise ValueError("New mileage from user must be a positive number.")
+
+        if self.current_mileage + new_user_mileage < self.mileage:
+            raise ValueError("Error in adding mileage to vehicle.")
+        self.current_mileage += new_user_mileage
 
     def drive(self):
         return f"{self.brand} {self.model} is driving with a motor."
@@ -80,9 +93,8 @@ class NonMotorized(Vehicle):
 
 
 class Car(Motorized):
-    def __init__(self, id, license_plate, brand, model, fuel_type, number_of_doors, has_air_conditioning):
-        super().__init__(id, license_plate, brand, model, fuel_type)
-
+    def __init__(self, id, license_plate, brand, model, fuel_type, number_of_doors, has_air_conditioning, mileage):
+        super().__init__(id, license_plate, brand, model, fuel_type, mileage)
         if not isinstance(number_of_doors, int) or number_of_doors < 2 or number_of_doors > 5:
             raise ValueError("Number of doors must be a number between 2 and 5.")
 
@@ -91,9 +103,8 @@ class Car(Motorized):
 
 
 class CargoTruck(Motorized):
-    def __init__(self, id, license_plate, brand, model, fuel_type, load_capacity):
-        super().__init__(id, license_plate, brand, model, fuel_type)
-
+    def __init__(self, id, license_plate, brand, model, fuel_type, load_capacity, mileage):
+        super().__init__(id, license_plate, brand, model, fuel_type, mileage)
         if not isinstance(load_capacity, (int, float)) or load_capacity < 0:
             raise ValueError("Load capacity must be a positive number.")
 
@@ -102,11 +113,10 @@ class CargoTruck(Motorized):
 
 
 class Motorcycle(Motorized):
-    def __init__(self, id, license_plate, brand, model, fuel_type, engine_capacity):
-        super().__init__(id, license_plate, brand, model, fuel_type)
-
-        if not isinstance(engine_capacity, int):
-            raise ValueError("Engine capcacity must pe a positiv number.")
+    def __init__(self, id, license_plate, brand, model, fuel_type, engine_capacity, mileage):
+        super().__init__(id, license_plate, brand, model, fuel_type, mileage)
+        if not isinstance(engine_capacity, int) or engine_capacity < 0:
+            raise ValueError("Engine capacity must be a positive number.")
 
         self.engine_capacity = engine_capacity
 
@@ -129,7 +139,8 @@ Car_1 = Car(
     "C-Class",
     "Petrol",
     5,
-    True
+    True,
+    5000  # Mileage
 )
 
 Car_2 = Car(
@@ -139,7 +150,8 @@ Car_2 = Car(
     "Corsa",
     "Diesel",
     3,
-    False
+    False,
+    3000  # Mileage
 )
 
 Cargo_truck = CargoTruck(
@@ -148,7 +160,8 @@ Cargo_truck = CargoTruck(
     "MAN",
     "L123",
     "Diesel",
-    14000
+    14000,  # Load capacity
+    10000   # Mileage
 )
 
 Motorbike = Motorcycle(
@@ -157,7 +170,8 @@ Motorbike = Motorcycle(
     "Kawasaki",
     "Versys",
     "Petrol",
-    1000
+    1000,  # Engine capacity
+    2000   # Mileage
 )
 
 Bike = Bicycle(
@@ -208,3 +222,20 @@ print()
 print(Cargo_truck.maintain())
 
 print("---------------------------------")
+
+
+# Updating mileage for Car_1
+print(f"Initial mileage for Car_1: {Car_1.current_mileage}")
+try:
+    Car_1.update_mileage(1500)  # Add 1500 km to the current mileage
+    print(f"Updated mileage for Car_1: {Car_1.current_mileage}")
+except ValueError as e:
+    print(f"Error updating mileage: {e}")
+
+# Updating mileage for Motorbike
+print(f"Initial mileage for Motorbike: {Motorbike.current_mileage}")
+try:
+    Motorbike.update_mileage(300)  # Add 300 km to the current mileage
+    print(f"Updated mileage for Motorbike: {Motorbike.current_mileage}")
+except ValueError as e:
+    print(f"Error updating mileage: {e}")
