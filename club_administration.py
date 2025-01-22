@@ -1,9 +1,11 @@
+import re
+
 class Club:
     def __init__(self, name, address, telephone, email):
-        self.name = name
-        self.address = address
-        self.telephone = telephone
-        self.email = email
+        self.name = self.validate_name(name)
+        self.address = self.validate_address(address)
+        self.telephone = self.validate_phone(telephone)
+        self.email = self.validate_email(email)
         self.members = []  # List to hold the members
 
     def add_member(self, member):
@@ -17,17 +19,92 @@ class Club:
     def get_club_details(self):
         return f"Club DETAILS: Name: {self.name}, Address: {self.address}, Phone: {self.telephone}, Email: {self.email}"
 
+    @staticmethod
+    def validate_name(name):
+        if re.match(r"^[A-Za-z\s]+$", name):
+            return name
+        else:
+            raise ValueError(f"Invalid name: {name}")
+
+    @staticmethod
+    def validate_address(address):
+        if re.match(r"^[ÖöÜüßÄäA-Za-z0-9\s,.-]+$", address):
+            return address
+        else:
+            raise ValueError(f"Invalid address: {address}")
+
+    @staticmethod
+    def validate_phone(telephone):
+        pattern = r"^\+?\d{1,4}?[-.\s]?\(?\d+\)?[-.\s]?\d{1,5}[-.\s]?\d{1,5}[-.\s]?\d{1,5}$"
+        if re.match(pattern, telephone):
+            return telephone
+        else:
+            raise ValueError(f"Invalid phone number: {telephone}")
+
+    @staticmethod
+    def validate_email(email):
+        pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+        if re.match(pattern, email):
+            return email
+        else:
+            raise ValueError(f"Invalid email address: {email}")
+
 
 # Inherits from Club
 class Member:
     def __init__(self, id, name, address, telephone, email, join_date, membership_status):
         self.id = id
-        self.name = name
-        self.address = address
-        self.telephone = telephone
-        self.email = email
-        self.join_date = join_date
-        self.membership_status = membership_status
+        self.name = self.validate_name(name)
+        self.address = self.validate_address(address)
+        self.telephone = self.validate_phone(telephone)
+        self.email = self.validate_email(email)
+        self.join_date = self.validate_date(join_date)
+        self.membership_status = self.validate_membership_status(membership_status)
+
+    @staticmethod
+    def validate_name(name):
+        if re.match(r"^[A-Za-z\s]+$", name):
+            return name
+        else:
+            raise ValueError(f"Invalid name: {name}")
+
+    @staticmethod
+    def validate_address(address):
+        if re.match(r"^[A-Za-z0-9\s,.-]+$", address):
+            return address
+        else:
+            raise ValueError(f"Invalid address: {address}")
+
+    @staticmethod
+    def validate_phone(telephone):
+        pattern = r"^\+?\d{1,4}?[-.\s]?\(?\d+\)?[-.\s]?\d{1,5}[-.\s]?\d{1,5}[-.\s]?\d{1,5}$"
+        if re.match(pattern, telephone):
+            return telephone
+        else:
+            raise ValueError(f"Invalid phone number: {telephone}")
+
+    @staticmethod
+    def validate_email(email):
+        pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+        if re.match(pattern, email):
+            return email
+        else:
+            raise ValueError(f"Invalid email address: {email}")
+
+    @staticmethod
+    def validate_date(join_date):
+        pattern = r"^\d{4}-\d{2}-\d{2}$"  # Format: YYYY-MM-DD
+        if re.match(pattern, join_date):
+            return join_date
+        else:
+            raise ValueError(f"Invalid date format: {join_date}")
+
+    @staticmethod
+    def validate_membership_status(membership_status):
+        if membership_status in ["Active", "Inactive"]:
+            return membership_status
+        else:
+            raise ValueError(f"Invalid membership status: {membership_status}")
 
     def pay_dues(self):
         print(f"Member: {self.name} has paid dues")
@@ -77,9 +154,9 @@ print("Create club")
 club_1 = Club("Chess Club", "Graz 106, Österreich", "06763216549", "contact@chessclub.com")
 print(club_1.get_club_details())
 
-# Create members
 print()
 print("Create members")
+# Create members
 member_1 = Member(
     "M001",
     "Alice",
@@ -158,7 +235,7 @@ board_member_1 = Board(
 club_1.add_member(board_member_1)
 
 print()
-#Approve budget
+# Approve budget
 print("Budget approve")
 board_member_1.approve_budget(50000)
 
