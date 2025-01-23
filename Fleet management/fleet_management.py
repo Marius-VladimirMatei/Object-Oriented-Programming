@@ -230,7 +230,7 @@ try:
     Car_1.update_mileage(1500)  # Add 1500 km to the current mileage
     print(f"Updated mileage for Car_1: {Car_1.current_mileage}")
 except ValueError as e:
-    print(f"Error updating mileage: {e}")
+    print(f"Error updating mileage:")
 
 # Updating mileage for Motorbike
 print(f"Initial mileage for Motorbike: {Motorbike.current_mileage}")
