@@ -1,27 +1,21 @@
 import re
 
 class Club:
+    _total_members = 0  # Class variable to count total number of members
+
     def __init__(self, name, address, telephone, email):
+        if not isinstance(name, str) or not isinstance(address, str) or not isinstance(telephone, str) or not isinstance(email, str):
+            raise ValueError("Name, address, telephone, and email must be strings")
+
         self.name = self.validate_name(name)
         self.address = self.validate_address(address)
         self.telephone = self.validate_phone(telephone)
         self.email = self.validate_email(email)
         self.members = []  # List to hold the members
 
-    def add_member(self, member):
-        self.members.append(member)
-        print(f"Added member: {member.name}")  # Print the name of the member
-
-    def remove_member(self, id):
-        self.members = [m for m in self.members if m.id != id]
-        print(f"Member removed")
-
-    def get_club_details(self):
-        return f"Club DETAILS: Name: {self.name}, Address: {self.address}, Phone: {self.telephone}, Email: {self.email}"
-
     @staticmethod
     def validate_name(name):
-        if re.match(r"^[A-Za-z\s]+$", name):
+        if re.match(r"^[ÖöÜüßÄäA-Za-z\s]+$", name):
             return name
         else:
             raise ValueError(f"Invalid name: {name}")
@@ -49,11 +43,31 @@ class Club:
         else:
             raise ValueError(f"Invalid email address: {email}")
 
+    @classmethod
+    def get_total_members(cls):
+        return cls._total_members
 
-# Inherits from Club
+    def add_member(self, member):
+        self.members.append(member)
+        Club._total_members += 1  # Increment member count when a new member is added
+        print(f"Added member: {member.name}")  # Print the name of the member
+
+    def remove_member(self, id):
+        self.members = [m for m in self.members if m.id != id]
+        Club._total_members -= 1  # Decrement member count when a member is removed
+        print(f"Member removed")
+
+    def get_club_details(self):
+        return f"Club DETAILS: Name: {self.name}, Address: {self.address}, Phone: {self.telephone}, Email: {self.email}"
+
+
 class Member:
-    def __init__(self, id, name, address, telephone, email, join_date, membership_status):
-        self.id = id
+    def __init__(self, member_id, name, address, telephone, email, join_date, membership_status):
+        if not all(isinstance(arg, str) for arg in
+                   [member_id, name, address, telephone, email, join_date, membership_status]):
+            raise TypeError("All input arguments must be strings.")
+
+        self.id = member_id
         self.name = self.validate_name(name)
         self.address = self.validate_address(address)
         self.telephone = self.validate_phone(telephone)
@@ -122,7 +136,12 @@ class Member:
 
 class Official(Member):
     def __init__(self, id, name, address, telephone, email, join_date, membership_status, role, department):
+        if not all(isinstance(arg, str) for arg in
+                   [id, name, address, telephone, email, join_date, membership_status, role, department]):
+            raise TypeError("All input arguments must be strings.")
+
         super().__init__(id, name, address, telephone, email, join_date, membership_status)  # Initialize parent (Member)
+
         self.role = role
         self.department = department
 
@@ -134,9 +153,16 @@ class Official(Member):
         print(f"Meeting scheduled on {date} by {self.name}.")
 
 
-class Board(Official):
+class Board(Member):
     def __init__(self, id, name, address, telephone, email, join_date, membership_status, role, department, board_position, position_start, position_end):
-        super().__init__(id, name, address, telephone, email, join_date, membership_status, role, department)
+        if not all(isinstance(arg, str) for arg in
+                   [id, name, address, telephone, email, join_date, membership_status, role, department, board_position, position_start, position_end]):
+            raise TypeError("All input arguments must be strings.")
+
+        super().__init__(id, name, address, telephone, email, join_date, membership_status)
+
+        self.role = role
+        self.department = department
         self.board_position = board_position
         self.position_start = position_start
         self.position_end = position_end
@@ -146,6 +172,7 @@ class Board(Official):
 
     def make_decision(self, decision):
         print(f"Decision made by {self.name}: {decision}")
+
 
 
 # Create Club
