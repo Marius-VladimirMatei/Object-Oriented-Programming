@@ -3,10 +3,16 @@ from account_manager import AccountManager
 if __name__ == "__main__":
     manager = AccountManager()
 
+
+# Example of usages
 # Create accounts
     print("\n Creating accounts:")
     manager.create_account(101, "Alice", 500)
     manager.create_account(102, "Bob", 1000)
+
+# Display all accounts
+    print("\n All Accounts Data:")
+    manager.display_all_accounts()
 
 
 # Deposit money using the new deposit_money function
