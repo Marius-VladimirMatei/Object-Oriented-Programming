@@ -2,6 +2,8 @@ from track import Track
 from album import Album
 from music_manager import MusicManager
 
+# main function with examples of usage
+
 if __name__ == "__main__":
     # Create tracks
     track1 = Track("Speak to Me", "speak_to_me.mp3", "00:03:57")
