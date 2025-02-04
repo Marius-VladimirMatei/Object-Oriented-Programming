@@ -14,7 +14,16 @@ class Vehicle_Data_Base:
     def save_vehicle(self):
         with open(self.filename, "w") as file:
             for vehicle in self.vehicles:
-                file.write(f"{vehicle.id},{vehicle.brand},{vehicle.model},{vehicle.year}\n")
+                file.write(f"{vehicle.id},"
+                           f"{vehicle.brand},"
+                           f"{vehicle.model},"
+                           f"{vehicle.year}, "
+                           f"{vehicle.mileage}, "
+                           f"{vehicle.fuel_type}, "
+                           f"{vehicle.fuel_level},"
+                           f"{vehicle.number_of_doors} "
+                           f"{vehicle.current_load}, "
+                           f"{vehicle.max_load} \n")
         print(f"All vehicles saved to {self.filename} successfully.")
 
 
