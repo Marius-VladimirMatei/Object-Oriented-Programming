@@ -1,5 +1,6 @@
 from person import Person
 
+
 # class Customer
 
 class Customer(Person):
