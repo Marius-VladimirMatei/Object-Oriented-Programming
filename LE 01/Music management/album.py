@@ -1,5 +1,7 @@
 from track import Track
 
+# Album class and methods
+
 class Album:
     def __init__(self, title, artist):
         self.title = title
