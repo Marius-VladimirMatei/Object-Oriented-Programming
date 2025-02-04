@@ -1,6 +1,8 @@
 from track import Track
 from album import Album
 
+# MusicManager Class to manage album methods
+
 class MusicManager:
     def __init__(self):
         self.albums = []
