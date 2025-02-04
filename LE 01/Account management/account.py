@@ -1,5 +1,6 @@
 class Account:
     # Represents a single account
+    # Class and methods
 
     def __init__(self, account_number, account_holder, balance=0.0):
 
