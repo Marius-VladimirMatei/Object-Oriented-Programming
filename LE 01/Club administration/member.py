@@ -1,4 +1,6 @@
 import re
+
+# Member class and methods
 class Member:
     def __init__(self, member_id, name, address, telephone, email, join_date, membership_status):
         if not all(isinstance(arg, str) for arg in

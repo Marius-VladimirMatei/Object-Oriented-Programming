@@ -1,6 +1,8 @@
 import re
 from member import Member
 
+# Official and Board classes
+
 class Official(Member):
     def __init__(self, id, name, address, telephone, email, join_date, membership_status, role, department):
         if not all(isinstance(arg, str) for arg in

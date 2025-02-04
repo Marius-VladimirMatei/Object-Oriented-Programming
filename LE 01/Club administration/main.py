@@ -4,6 +4,7 @@ from member import Member
 from official import Official, Board
 
 
+# Examples of methods
 # Create Club
 print()
 print("Create club")
