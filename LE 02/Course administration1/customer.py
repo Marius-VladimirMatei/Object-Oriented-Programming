@@ -2,9 +2,9 @@ import re
 from person import Person
 
 class Customer(Person):
-    def __init__(self, name, address, telephone, email, customer_id):
+    def __init__(self, name, address, post_code, telephone, email, customer_id):
         # Call the parent class's constructor
-        super().__init__(name, address, telephone, email)
+        super().__init__(name, address, post_code, telephone, email)
 
         # Validate the customer_id
         if not isinstance(customer_id, int) or not re.match(r"^\d{3}$", str(customer_id)):

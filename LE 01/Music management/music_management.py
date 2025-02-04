@@ -97,7 +97,7 @@ if __name__ == "__main__":
     manager.release_album("The Dark Side of the Moon")
 
     # Remove track
-    print("Track 4 removoed from the album.")
+    print("Track 4 removed from the album.")
     album.remove_track(track4)
 
     # Display album after removing track and calculate updated total length

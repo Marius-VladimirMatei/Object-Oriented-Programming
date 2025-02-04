@@ -2,14 +2,15 @@ import re
 
 
 class Person:
-    def __init__(self, name, address, telephone, email):
+    def __init__(self, name, address, post_code, telephone, email):
         # Ensure all arguments are strings
-        if not all(isinstance(arg, str) for arg in [name, address, telephone, email]):
-            raise TypeError("Please insert valid entries for name, address, telephone, and email.")
+        if not all(isinstance(arg, str) for arg in [name, address, post_code, telephone, email]):
+            raise TypeError("Please insert valid entries for name, address, post code, telephone, and email.")
 
         # Validate each attribute
         self.name = self.validate_name(name)
         self.address = self.validate_address(address)
+        self.post_code = post_code
         self.telephone = self.validate_phone(telephone)
         self.email = self.validate_email(email)
 
@@ -26,6 +27,14 @@ class Person:
             return address
         else:
             raise ValueError(f"Invalid address: {address}")
+
+    @staticmethod
+    def validate_post_code(post_code):
+        pattern = r"^\d{4}$"
+        if re.match(pattern, post_code):
+            return post_code
+        else:
+            raise ValueError(f"Invalid email post_code: {post_code}")
 
     @staticmethod
     def validate_phone(telephone):
