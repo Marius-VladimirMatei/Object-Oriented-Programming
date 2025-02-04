@@ -1,3 +1,6 @@
+
+# class for courses
+
 class Course:
     def __init__(self, course_name, course_id, start_date, end_date):
         self.course_name = course_name
