@@ -5,6 +5,7 @@ from employee import Employee
 from courses import Course
 from database import Database
 
+# Add and edit function
 # General function for validating user input
 def get_input(prompt, pattern, error_message):
     while True:
