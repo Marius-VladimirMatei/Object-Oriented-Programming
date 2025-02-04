@@ -1,2 +1,0 @@
-Michael Johnson,789 Elm St Chicago IL,michael.johnson@example.com,+431234567,10/06/1980,2001
-Sarah Williams,101 Pine Rd San Francisco CA,sarah.williams@example.com,+439876543,05/12/1992,2002"
