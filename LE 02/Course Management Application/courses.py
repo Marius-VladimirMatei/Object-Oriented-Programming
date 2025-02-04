@@ -1,4 +1,3 @@
-
 # class for courses
 
 class Course:
