@@ -7,6 +7,8 @@ from motorcycle import Motorcycle
 from bicycle import Bicycle
 
 
+data_base = Vehicle_Data_Base("vehicles.txt")
+
 
 # Update the second dropdown based on the first selection
 def update_vehicle_options(event):
@@ -62,7 +64,7 @@ def open_refuel_window():
 
 # Main application window
 root = tk.Tk()
-root.title("Vehicle Selector")
+root.title("Vehicle Management")
 root.geometry("1200x1200")
 
 # Vehicle type selection
@@ -79,24 +81,22 @@ vehicle_var = tk.StringVar()
 vehicle_dropdown = ttk.Combobox(root, textvariable=vehicle_var, state="readonly")
 vehicle_dropdown.pack(pady=10)
 
+
 # Buttons
-save_button = tk.Button(root, text="Add Vehicle", command=lambda: print("Vehicle added!"))
-save_button.pack(pady=10)
 
-show_all_button = tk.Button(root, text="Show ALL Vehicles")
-show_all_button.pack(pady=10)
+def create_button(text, command):
+    btn = tk.Button(root, text=text, command=command, width=20)
+    btn.pack(pady=5)  # `fill="x"` expands it horizontally
+    return btn
 
-show_all_button = tk.Button(root, text="Show Cars")
-show_all_button.pack(pady=10)
 
-show_all_button = tk.Button(root, text="Show Cargo Trucks")
-show_all_button.pack(pady=10)
+create_button("Add Vehicle", lambda: print("Vehicle added!"))
+create_button("Show ALL Vehicles", data_base.load_vehicles())
+create_button("Show Cars", None)
+create_button("Show Cargo Trucks", None)
+create_button("Show Motorcycles", None)
+create_button("Refuel Vehicle", open_refuel_window)
 
-show_all_button = tk.Button(root, text="Show Motorcycles")
-show_all_button.pack(pady=10)
-
-refuel_button = tk.Button(root, text="Refuel Vehicle", command=open_refuel_window)
-refuel_button.pack(pady=10)
 
 # Frame for vehicle-specific fields
 vehicle_fields_frame = tk.Frame(root)
