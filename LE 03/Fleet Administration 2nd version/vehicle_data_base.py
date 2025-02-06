@@ -5,6 +5,8 @@ from car import Car
 from cargo_truck import Cargo_truck
 from motorcycle import Motorcycle
 from bicycle import Bicycle
+import tkinter as tk
+
 
 
 # Data Base class to manage all the vehicle objects
@@ -105,14 +107,17 @@ class Vehicle_Data_Base:
             print(f"Error loading vehicles: {e}")
 
 
-    # list all objects
-    def list_vehicles(self):
 
-        vehicle_list = []
+# list all objects
+
+    def list_vehicles(self, listbox):
+        # Loads vehicles into the listbox and prints them to the console
+        listbox.delete(0, tk.END)
+
         print("Vehicle list:")
 
         for vehicle in self.vehicles:
-            if isinstance(vehicle, Cargo_truck):  # Display all cargo truck attributes
+            if isinstance(vehicle, Cargo_truck):
                 vehicle_info = (
                     f"ID: {vehicle.id}, License Plate: {vehicle.license_plate}, Brand: {vehicle.brand}, "
                     f"Model: {vehicle.model}, Year: {vehicle.year}, Mileage: {vehicle.mileage}, "
@@ -120,7 +125,7 @@ class Vehicle_Data_Base:
                     f"Current load: {vehicle.current_load} kg, Max load: {vehicle.max_load} kg"
                 )
 
-            elif isinstance(vehicle, Motorized):  # Generic Motorized vehicles
+            elif isinstance(vehicle, Motorized):
                 vehicle_info = (
                     f"ID: {vehicle.id}, License Plate: {vehicle.license_plate}, Brand: {vehicle.brand}, "
                     f"Model: {vehicle.model}, Year: {vehicle.year}, Mileage: {vehicle.mileage}, "
@@ -139,10 +144,9 @@ class Vehicle_Data_Base:
                     f"Type: {vehicle.type}"
                 )
 
-            print(vehicle_info)  #  Print to console
-            vehicle_list.append(vehicle_info)  # Add to list for GUI
+            listbox.insert(tk.END, vehicle_info)
 
-        return vehicle_list  # Returns formatted list for Listbox
+
 
     # list only car objects
     def list_cars(self):
