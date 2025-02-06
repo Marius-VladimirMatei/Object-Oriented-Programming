@@ -4,7 +4,7 @@ from vehicle import Vehicle
 
 
 class NonMotorized(Vehicle):
-    def __init__(self, id, license_plate, brand, model, year, type):
-        super().__init__(id, license_plate, brand, model, year)
+    def __init__(self, id, brand, model, year, type):
+        super().__init__(id, brand, model, year)
         self.type = type
 
