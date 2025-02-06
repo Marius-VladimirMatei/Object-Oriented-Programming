@@ -107,46 +107,44 @@ class Vehicle_Data_Base:
 
     # list all objects
     def list_vehicles(self):
+
+        vehicle_list = []
         print("Vehicle list:")
+
         for vehicle in self.vehicles:
             if isinstance(vehicle, Cargo_truck):  # Display all cargo truck attributes
-                print(f"ID: {vehicle.id}, "
-                      f"License Plate: {vehicle.license_plate}, "
-                      f"Brand: {vehicle.brand}, "
-                      f"Model: {vehicle.model}, "
-                      f"Year: {vehicle.year}, "
-                      f"Mileage: {vehicle.mileage}, "
-                      f"Fuel type: {vehicle.fuel_type}, "
-                      f"Fuel level: {vehicle.fuel_level} liters, "
-                      f"Current load: {vehicle.current_load} kg, "
-                      f"Max load: {vehicle.max_load} kg")
+                vehicle_info = (
+                    f"ID: {vehicle.id}, License Plate: {vehicle.license_plate}, Brand: {vehicle.brand}, "
+                    f"Model: {vehicle.model}, Year: {vehicle.year}, Mileage: {vehicle.mileage}, "
+                    f"Fuel type: {vehicle.fuel_type}, Fuel level: {vehicle.fuel_level} liters, "
+                    f"Current load: {vehicle.current_load} kg, Max load: {vehicle.max_load} kg"
+                )
 
             elif isinstance(vehicle, Motorized):  # Generic Motorized vehicles
-                print(f"ID: {vehicle.id}, "
-                      f"License Plate: {vehicle.license_plate}, "
-                      f"Brand: {vehicle.brand}, "
-                      f"Model: {vehicle.model}, "
-                      f"Year: {vehicle.year}, "
-                      f"Mileage: {vehicle.mileage}, "
-                      f"Fuel type: {vehicle.fuel_type}, "
-                      f"Fuel level: {vehicle.fuel_level} liters")
+                vehicle_info = (
+                    f"ID: {vehicle.id}, License Plate: {vehicle.license_plate}, Brand: {vehicle.brand}, "
+                    f"Model: {vehicle.model}, Year: {vehicle.year}, Mileage: {vehicle.mileage}, "
+                    f"Fuel type: {vehicle.fuel_type}, Fuel level: {vehicle.fuel_level} liters"
+                )
 
             elif isinstance(vehicle, Bicycle):
-                print(f"ID: {vehicle.id}, "
-                      f"Brand: {vehicle.brand}, "
-                      f"Model: {vehicle.model}, "
-                      f"Year: {vehicle.year}, "
-                      f"Type: {vehicle.type}, "
-                      f"Gear Count: {vehicle.gear_count}")
+                vehicle_info = (
+                    f"ID: {vehicle.id}, Brand: {vehicle.brand}, Model: {vehicle.model}, Year: {vehicle.year}, "
+                    f"Type: {vehicle.type}, Gear Count: {vehicle.gear_count}"
+                )
 
             elif isinstance(vehicle, NonMotorized):
-                print(f"ID: {vehicle.id}, "
-                      f"Brand: {vehicle.brand}, "
-                      f"Model: {vehicle.model}, "
-                      f"Year: {vehicle.year}, "
-                      f"Type: {vehicle.type}")
+                vehicle_info = (
+                    f"ID: {vehicle.id}, Brand: {vehicle.brand}, Model: {vehicle.model}, Year: {vehicle.year}, "
+                    f"Type: {vehicle.type}"
+                )
 
-# list only car objects
+            print(vehicle_info)  #  Print to console
+            vehicle_list.append(vehicle_info)  # Add to list for GUI
+
+        return vehicle_list  # Returns formatted list for Listbox
+
+    # list only car objects
     def list_cars(self):
         print("Car list:")
         for vehicle in self.vehicles:
