@@ -1,2 +1,4 @@
-1,Ford,Mondeo,2024
-2,Mercedes,Actros,2022
+108,License plate motorcycle,BMW,R1250,2025,2500,Petrol,15
+102,Bicycle brand,Model,2023,Bicycle,18
+1,G123AB,Ford,Mondeo,2024,5000,Petrol,55
+2,CA123NA,Mercedes,Actros,2022,525000,Diesel,450
