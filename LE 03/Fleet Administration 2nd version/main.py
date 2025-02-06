@@ -1,5 +1,5 @@
 from vehicle import Vehicle
-from motoritzed import Motorized
+from motorized import Motorized
 from non_motorized import NonMotorized
 from car import Car
 from cargo_truck import Cargo_truck
@@ -24,7 +24,7 @@ if __name__ == "__main__":
                 "Petrol",
                 55,
                 5
-                )
+    )
 
     cargo_truck_1 = Cargo_truck(
         2,
@@ -32,8 +32,6 @@ if __name__ == "__main__":
         "Mercedes",
         "Actros",
         2022,
-
-
         525000,
         "Diesel",
         450,
@@ -62,6 +60,8 @@ if __name__ == "__main__":
         15
     )
 
+
+    print("Create objects-----")
     data_base.add_vehicle(motorcycle_1)
 
     data_base.add_vehicle(bicycle_1)
@@ -69,20 +69,28 @@ if __name__ == "__main__":
     data_base.add_vehicle(car_1)
     data_base.add_vehicle(cargo_truck_1)
 
-
     data_base.list_vehicles()
     data_base.save_vehicle()
 
 
-motorcycle_1.refuel(90)
+    print("Refuel, load, unload-----")
+    motorcycle_1.refuel(90)
 
-car_1.refuel(55)
+    car_1.refuel(55)
 
-cargo_truck_1.load(7950)
+    cargo_truck_1.load(7950)
 
-cargo_truck_1.unload(950)
+    cargo_truck_1.unload(950)
 
 
+    print("Individual lists------")
+    data_base.list_cars()
+
+    data_base.list_cargo_trucks()
+
+    data_base.list_motorcycles()
+
+    data_base.list_bicycles()
 
 
 
