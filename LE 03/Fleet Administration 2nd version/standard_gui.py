@@ -91,7 +91,30 @@ def create_button(text, command):
 
 
 create_button("Add Vehicle", lambda: print("Vehicle added!"))
-create_button("Show ALL Vehicles", data_base.load_vehicles())
+
+
+
+# SHOW ALL VEHICLES Button !!!!!!
+
+def show_all_vehicles():
+    data_base.load_vehicles()  # Load vehicles from file
+    vehicle_listbox.delete(0, tk.END)  # Clear listbox before inserting new data
+
+    vehicle_list = data_base.list_vehicles()  # Get formatted vehicle list
+
+    for vehicle in vehicle_list:
+        vehicle_listbox.insert(tk.END, vehicle)  # Insert into GUI listbox
+
+create_button("Show ALL Vehicles", show_all_vehicles) # Button calls the new created function
+
+# ------------------------------------------------------------------------------------------------
+
+
+data_base.load_vehicles()
+create_button("Show ALL Vehicles", lambda: data_base.list_vehicles() ) #????????????
+
+
+
 create_button("Show Cars", None)
 create_button("Show Cargo Trucks", None)
 create_button("Show Motorcycles", None)
