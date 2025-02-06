@@ -1,4 +1,4 @@
-from motoritzed import Motorized
+from motorized import Motorized
 
 # class for Motorcycle objects
 
