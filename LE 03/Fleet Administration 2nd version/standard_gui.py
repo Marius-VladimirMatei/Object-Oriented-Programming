@@ -111,7 +111,8 @@ create_button("Show ALL Vehicles", show_all_vehicles) # Button calls the new cre
 
 
 data_base.load_vehicles()
-create_button("Show ALL Vehicles", lambda: data_base.list_vehicles() ) #????????????
+create_button("Show ALL Vehicles", lambda: data_base.list_vehicles(vehicle_listbox))
+ #????????????
 
 
 
