@@ -13,6 +13,7 @@ from vehicle_data_base import Vehicle_Data_Base
 if __name__ == "__main__":
     data_base = Vehicle_Data_Base("vehicles.txt")
 
+
     car_1 = Car(
                 1,
                 "G123AB",
@@ -31,6 +32,8 @@ if __name__ == "__main__":
         "Mercedes",
         "Actros",
         2022,
+
+
         525000,
         "Diesel",
         450,
@@ -38,13 +41,40 @@ if __name__ == "__main__":
         12000
     )
 
+    bicycle_1 = Bicycle(
+        102,
+        "Bicycle brand",
+        "Model",
+        2023,
+        "Bicycle",
+        18
+    )
+
+
+    motorcycle_1 = Motorcycle(
+        108,
+        "License plate motorcycle",
+        "BMW",
+        "R1250",
+        "2025",
+        2500,
+        "Petrol",
+        15
+    )
+
+    data_base.add_vehicle(motorcycle_1)
+
+    data_base.add_vehicle(bicycle_1)
+
     data_base.add_vehicle(car_1)
     data_base.add_vehicle(cargo_truck_1)
+
 
     data_base.list_vehicles()
     data_base.save_vehicle()
 
 
+motorcycle_1.refuel(90)
 
 car_1.refuel(55)
 
