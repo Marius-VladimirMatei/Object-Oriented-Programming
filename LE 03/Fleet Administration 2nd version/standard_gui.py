@@ -23,22 +23,32 @@ def update_vehicle_fields(event):
 
     labels = []
     if vehicle_var.get() == "Car":
-        labels = ["ID", "License Plate", "Brand", "Model", "Year", "Mileage", "Fuel Type", "Fuel Level",
+        labels = ["ID", "License Plate", "Brand", "Model", "Year", "Mileage", "Select Fuel Type", "Fuel Level",
                   "Number of Doors"]
     elif vehicle_var.get() == "Cargo truck":
-        labels = ["ID", "License Plate", "Brand", "Model", "Year", "Mileage", "Fuel Type", "Fuel Level", "Current Load",
+        labels = ["ID", "License Plate", "Brand", "Model", "Year", "Mileage", "Select Fuel Type", "Fuel Level", "Current Load",
                   "Max Load"]
     elif vehicle_var.get() == "Motorcycle":
-        labels = ["ID", "License Plate", "Brand", "Model", "Year", "Mileage", "Fuel Type", "Fuel Level"]
+        labels = ["ID", "License Plate", "Brand", "Model", "Year", "Mileage", "Select Fuel Type", "Fuel Level"]
     elif vehicle_var.get() == "Bicycle":
         labels = ["ID", "Brand", "Model", "Year", "Type", "Gear Count"]
 
     entries = {}
     for label in labels:
         tk.Label(vehicle_fields_frame, text=label).pack(anchor="w")
-        entry = tk.Entry(vehicle_fields_frame)
-        entry.pack(fill="x", pady=2)
-        entries[label] = entry
+
+        if label == "Select Fuel Type":  # Add dropdown for fuel type
+            fuel_types = ("Petrol", "Diesel", "Electric")
+            fuel_var = tk.StringVar()
+            fuel_dropdown = ttk.Combobox(vehicle_fields_frame, textvariable=fuel_var, state="readonly")
+            fuel_dropdown['values'] = fuel_types
+            fuel_dropdown.current(0)  # Default selection
+            fuel_dropdown.pack(fill="x", pady=2)
+            entries[label] = fuel_var  # Store variable instead of entry widget
+        else:
+            entry = tk.Entry(vehicle_fields_frame)
+            entry.pack(fill="x", pady=2)
+            entries[label] = entry
 
 
 # Open a new window for refueling
@@ -53,7 +63,7 @@ def open_refuel_window():
 # Main application window
 root = tk.Tk()
 root.title("Vehicle Selector")
-root.geometry("1000x800")
+root.geometry("1200x1200")
 
 # Vehicle type selection
 vehicle_type_var = tk.StringVar()
@@ -74,6 +84,15 @@ save_button = tk.Button(root, text="Add Vehicle", command=lambda: print("Vehicle
 save_button.pack(pady=10)
 
 show_all_button = tk.Button(root, text="Show ALL Vehicles")
+show_all_button.pack(pady=10)
+
+show_all_button = tk.Button(root, text="Show Cars")
+show_all_button.pack(pady=10)
+
+show_all_button = tk.Button(root, text="Show Cargo Trucks")
+show_all_button.pack(pady=10)
+
+show_all_button = tk.Button(root, text="Show Motorcycles")
 show_all_button.pack(pady=10)
 
 refuel_button = tk.Button(root, text="Refuel Vehicle", command=open_refuel_window)
