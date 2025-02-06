@@ -1,4 +1,4 @@
-108,License plate motorcycle,BMW,R1250,2025,2500,Petrol,15
-102,Bicycle brand,Model,2023,Bicycle,18
-1,G123AB,Ford,Mondeo,2024,5000,Petrol,55
-2,CA123NA,Mercedes,Actros,2022,525000,Diesel,450
+ID: 108, License plate: License plate motorcycle, Brand: BMW, Model: R1250, Year: 2025, Mileage: 2500, Fuel type: Petrol, Fuel level: 15 liters
+ID: 102, Brand: Bicycle brand, Model: Model, Year: 2023, Type: Bicycle, Gear count: 18
+ID: 1, License plate: G123AB, Brand: Ford, Model: Mondeo, Year: 2024, Mileage: 5000, Fuel type: Petrol, Fuel level: 55 liters
+ID: 2, License plate: CA123NA, Brand: Mercedes, Model: Actros, Year: 2022, Mileage: 525000, Fuel type: Diesel, Fuel level: 450 liters
