@@ -53,7 +53,59 @@ class Vehicle_Data_Base:
         print("Vehicles saved successfully.")
 
 
-# list all objects
+# load the txt file needed in GUI
+    def load_vehicles(self):
+        try:
+            with open(self.filename, "r") as file:
+                for line in file:
+                    attributes = dict(attr.split(": ") for attr in line.strip().split(", "))
+
+                    vehicle_id = int(attributes["ID"])
+                    brand = attributes["Brand"]
+                    model = attributes["Model"]
+                    year = int(attributes["Year"])
+
+                    if "License plate" in attributes:  # Motorized Vehicles
+                        license_plate = attributes["License plate"]
+                        mileage = int(attributes["Mileage"])
+                        fuel_type = attributes["Fuel type"]
+                        fuel_level = float(attributes["Fuel level"].split()[0])
+
+                        if "Current load" in attributes:  # Cargo Truck
+                            current_load = int(attributes["Current load"].split()[0])
+                            max_load = int(attributes["Max load"].split()[0])
+                            vehicle = Cargo_truck(vehicle_id, license_plate, brand, model, year, mileage, fuel_type,
+                                                  fuel_level, current_load, max_load)
+
+                        elif "Number of doors" in attributes:  # Car
+                            number_of_doors = int(attributes["Number of doors"])
+                            vehicle = Car(vehicle_id, license_plate, brand, model, year, mileage, fuel_type, fuel_level,
+                                          number_of_doors)
+
+                        else:  # Motorcycle
+                            vehicle = Motorcycle(vehicle_id, license_plate, brand, model, year, mileage, fuel_type,
+                                                 fuel_level)
+
+                    elif "Gear count" in attributes:  # Bicycle
+                        gear_count = int(attributes["Gear count"])
+                        vehicle_type = attributes["Type"]
+                        vehicle = Bicycle(vehicle_id, brand, model, year, vehicle_type, gear_count)
+
+                    else:  # Non-Motorized
+                        vehicle_type = attributes["Type"]
+                        vehicle = NonMotorized(vehicle_id, brand, model, year, vehicle_type)
+
+                    self.vehicles.append(vehicle)
+
+            print("Vehicles loaded successfully.")
+
+        except FileNotFoundError:
+            print("No saved vehicle data found.")
+        except Exception as e:
+            print(f"Error loading vehicles: {e}")
+
+
+    # list all objects
     def list_vehicles(self):
         print("Vehicle list:")
         for vehicle in self.vehicles:
