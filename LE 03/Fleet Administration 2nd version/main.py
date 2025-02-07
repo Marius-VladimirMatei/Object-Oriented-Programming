@@ -12,6 +12,7 @@ from vehicle_data_base import Vehicle_Data_Base
 
 if __name__ == "__main__":
     data_base = Vehicle_Data_Base("vehicles.txt")
+    data_base.load_vehicles()  # Load vehicles from file
 
 
     car_1 = Car(
@@ -61,6 +62,7 @@ if __name__ == "__main__":
     )
 
 
+
     print("Create objects-----")
     data_base.add_vehicle(motorcycle_1)
 
@@ -69,7 +71,7 @@ if __name__ == "__main__":
     data_base.add_vehicle(car_1)
     data_base.add_vehicle(cargo_truck_1)
 
-    data_base.list_vehicles()
+    # data_base.list_vehicles()
     data_base.save_vehicle()
 
 
@@ -94,7 +96,8 @@ if __name__ == "__main__":
 
 
 
-
+    print("Show total FUEL by type")
+    data_base.calculate_fuel_totals()
 
 
 
