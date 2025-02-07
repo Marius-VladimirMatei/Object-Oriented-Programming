@@ -18,29 +18,34 @@ class FleetApp:
         self.root.geometry("900x1200")
         self.root.resizable(True, True)
 
+
+        # Category Selection
         tk.Label(root, text="Select Vehicle Category:").pack()
         self.category = tk.StringVar(value="Motorized")
-        self.category_menu = tk.OptionMenu(root, self.category, "Motorized", "Non-Motorized",
-                                           command=self.update_vehicle_menu)
+        self.category_menu = tk.OptionMenu(root, self.category, "Motorized", "Non-Motorized", command=self.update_vehicle_menu)
         self.category_menu.pack()
 
+
+        # Vehicle Type Selection
         tk.Label(root, text="Vehicle Type:").pack()
         self.vehicle_type = tk.StringVar(value="Car")
-        self.vehicle_menu = tk.OptionMenu(root, self.vehicle_type, "Car", "Truck", "Motorcycle", "Bicycle",
-                                          command=self.update_vehicle_fields)
+        self.vehicle_menu = tk.OptionMenu(root, self.vehicle_type, "Car", "Truck", "Motorcycle", "Bicycle", command=self.update_vehicle_fields)
         self.vehicle_menu.pack()
+
 
         self.vehicle_fields_frame = tk.Frame(root)
         self.vehicle_fields_frame.pack(pady=10, fill="x")
 
+        # Buttons
         tk.Button(root, text="Add Vehicle", command=self.add_vehicle, width=20, height=2).pack(pady=5)
         tk.Button(root, text="List Vehicles", command=self.list_vehicles, width=20, height=2).pack(pady=5)
         tk.Button(root, text="Refuel Vehicle", command=self.open_refuel_window, width=20, height=2).pack(pady=5)
+        tk.Button(root, text="Show Fuel Summary", command=self.calculate_fuel_totals, width=20, height=2).pack(pady=5)
 
+        # Listbox to display all data
         tk.Label(root, text="Fleet Vehicles Output:").pack()
         self.vehicle_listbox = tk.Listbox(root, width=10, height=50)
         self.vehicle_listbox.pack(pady=40, padx=10, fill="both", expand=True)
-
 
         self.entries = {}  # Store input fields
         self.update_vehicle_menu("Motorized")
@@ -48,8 +53,8 @@ class FleetApp:
         self.list_vehicles()
 
 
+    # vehicle menu
     def update_vehicle_menu(self, selected_category):
-        """ Update vehicle type menu based on selected category. """
         menu = self.vehicle_menu["menu"]
         menu.delete(0, "end")
         motorized = ["Car", "Truck", "Motorcycle"]
@@ -64,8 +69,10 @@ class FleetApp:
 
         self.update_vehicle_fields(options[0])  # Ensure the first option is updated correctly
 
+
+    # proper input fields by type
     def update_vehicle_fields(self, vehicle_type=None):
-        """ Display the correct input fields dynamically based on vehicle type. """
+
         for widget in self.vehicle_fields_frame.winfo_children():
             widget.destroy()  # Clear previous fields
 
@@ -103,8 +110,9 @@ class FleetApp:
                 entry.pack(pady=2, padx=5)  # Keeps input field centered
                 self.entries[label] = entry
 
+
+    # Add new vehicle to db
     def add_vehicle(self):
-        """ Add a new vehicle to the database and clear input fields after. """
         vehicle_id = self.entries["ID"].get()
         brand = self.entries.get("Brand", tk.StringVar()).get()
         model = self.entries.get("Model", tk.StringVar()).get()
@@ -179,8 +187,10 @@ class FleetApp:
 
         messagebox.showinfo("Success", f"{vehicle_type} added successfully!")
 
+
+    # new windown for refuel
     def open_refuel_window(self):
-        """ Open a new window for refueling a selected vehicle. """
+
         self.refuel_window = tk.Toplevel(self.root)
         self.refuel_window.title("Refuel Vehicle")
         self.refuel_window.geometry("300x200")
@@ -212,8 +222,10 @@ class FleetApp:
 
         tk.Button(self.refuel_window, text="Refuel", command=self.refuel_vehicle).pack(pady=10)
 
+
+    # Refuel by selected id
     def refuel_vehicle(self):
-        """ Update the fuel level of the selected vehicle. """
+
         vehicle_id = self.selected_vehicle_id.get()
 
         if not vehicle_id:
@@ -241,10 +253,28 @@ class FleetApp:
 
         messagebox.showerror("Error", "Vehicle not found or fuel level not available.")
 
+    # Fuel by type
+    def calculate_fuel_totals(self):
+        fuel_totals = db.calculate_fuel_totals()  # Get fuel totals
+
+        if not fuel_totals:
+            messagebox.showinfo("Fuel Summary", "No fuel data available.")
+            return
+
+        summary = ""
+        for fuel, amount in fuel_totals.items():
+            summary += f"{fuel}: {amount} liters\n"
+
+        messagebox.showinfo("Fuel Summary", f"Total Fuel Breakdown:\n{summary}")
+
+
+
+
     def list_vehicles(self):
-        """ Display the list of vehicles. """
+        # Display list of vehicles
         self.vehicle_listbox.delete(0, tk.END)
         db.list_vehicles(self.vehicle_listbox)
+
 
 
 root = tk.Tk()
