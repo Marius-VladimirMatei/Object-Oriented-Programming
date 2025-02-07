@@ -207,13 +207,14 @@ class Vehicle_Data_Base:
         fuel_totals = {}
 
         for vehicle in self.vehicles:
+            print(f"Checking Vehicle: {vehicle.__dict__}")  # Debugging print
             if isinstance(vehicle, Motorized):  # Only consider motorized vehicles
                 if vehicle.fuel_type in fuel_totals:
                     fuel_totals[vehicle.fuel_type] += vehicle.fuel_level
                 else:
                     fuel_totals[vehicle.fuel_type] = vehicle.fuel_level
 
-        print("\nTotal Fuel Breakdown:")
-        for fuel, amount in fuel_totals.items():
-            print(f"{fuel}: {amount} liters")
+        print("\nTotal Fuel Breakdown:", fuel_totals)  # Debugging print
+        return fuel_totals
+
 
