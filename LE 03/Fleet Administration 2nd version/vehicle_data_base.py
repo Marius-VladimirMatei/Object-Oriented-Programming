@@ -111,7 +111,7 @@ class Vehicle_Data_Base:
 # list all objects
 
     def list_vehicles(self, listbox):
-        # Loads vehicles into the listbox and prints them to the console
+
         listbox.delete(0, tk.END)
 
         print("Vehicle list:")
@@ -143,9 +143,8 @@ class Vehicle_Data_Base:
                     f"ID: {vehicle.id}, Brand: {vehicle.brand}, Model: {vehicle.model}, Year: {vehicle.year}, "
                     f"Type: {vehicle.type}"
                 )
-
+            print(vehicle_info)
             listbox.insert(tk.END, vehicle_info)
-
 
 
     # list only car objects
@@ -203,3 +202,18 @@ class Vehicle_Data_Base:
                       f"Year: {vehicle.year}, "
                       f"Type: {vehicle.type}, "
                       f"Gear Count: {vehicle.gear_count}\n")
+
+    def calculate_fuel_totals(self):
+        fuel_totals = {}
+
+        for vehicle in self.vehicles:
+            if isinstance(vehicle, Motorized):  # Only consider motorized vehicles
+                if vehicle.fuel_type in fuel_totals:
+                    fuel_totals[vehicle.fuel_type] += vehicle.fuel_level
+                else:
+                    fuel_totals[vehicle.fuel_type] = vehicle.fuel_level
+
+        print("\nTotal Fuel Breakdown:")
+        for fuel, amount in fuel_totals.items():
+            print(f"{fuel}: {amount} liters")
+
