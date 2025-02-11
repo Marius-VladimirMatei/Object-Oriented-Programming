@@ -122,9 +122,6 @@ def update_member_in_file(updated_member: Member):
 
 def show_all_members():
 
-    """Loads all members from the JSON file, formats their details into a string,
-    and returns that string to be later used in a GUI interface """
-
     members = load_members()
     if not members:
         return "No members found."
