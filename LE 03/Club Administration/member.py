@@ -15,7 +15,7 @@ class Member:
 
 
     def to_dict(self):
-        """Convert the Member instance into a dictionary for JSON serialization."""
+        # Convert the Member instance into a dictionary for JSON serialization
         return {
             "id": self.id,
             "name": self.name,
@@ -74,7 +74,6 @@ def add_member(member):
     save_members(members)
 
 
-
  # Remove a member by their id from the JSON file.
 def remove_member(member_id):
 
@@ -103,8 +102,8 @@ def load_members():
         return []
 
 
-""" Update the member record in the JSON file with the details of updated_member.
-    The function finds the member by their id, updates the record, and saves the file. """
+    # Update the member record in the JSON file with the details of updated_member.
+    # The function finds the member by their id, updates the record, and saves the file.
 
 def update_member_in_file(updated_member: Member):
 

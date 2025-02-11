@@ -5,7 +5,7 @@ class Club:
 
     clubs = [] # class level list to store all clubs
 
-    def __init__(self, name: str, address: str, telephone_number: str, email_address: str):
+    def __init__(self, name, address, telephone_number, email_address):
         self.name = Validator.validate_name(name)
         self.address = Validator.validate_address(address)
         self.telephone_number = Validator.validate_telephone(telephone_number)
