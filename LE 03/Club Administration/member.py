@@ -138,6 +138,20 @@ def show_all_members():
         output += f"Email Address: {member.get('email_address')}\n"
         output += f"Join Date: {member.get('join_date')}\n"
         output += f"Membership Status: {member.get('membership_status')}\n"
-        output += "-" * 40 + "\n"
-    return output
 
+        # Check for Official-specific fields
+        if member.get('role') is not None:
+            output += f"Role: {member.get('role')}\n"
+        if member.get('department') is not None:
+            output += f"Department: {member.get('department')}\n"
+
+        # Check for Board-specific fields
+        if member.get('board_position') is not None:
+            output += f"Board Position: {member.get('board_position')}\n"
+        if member.get('position_start') is not None:
+            output += f"Position Start: {member.get('position_start')}\n"
+        if member.get('position_end') is not None:
+            output += f"Position End: {member.get('position_end')}\n"
+
+        output += "--------\n"
+    return output
