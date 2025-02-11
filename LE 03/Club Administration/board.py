@@ -15,6 +15,17 @@ class Board(Official):
     def make_decision(self, decision: str):
         return f"Board member {self.name} made a decision: {decision}"
 
+    # Override the base to_dict method to include the additional fields specific to an Official
+    def to_dict(self):
 
+        data = super().to_dict()  # Base dictionary data from Member.to_dict()
 
+        # Add Official-specific attributes
+        data['role'] = self.role
+        data['department'] = self.department
+        # Add Board-specific attributes
+        data['board_position'] = self.board_position
+        data['position_start'] = self.position_start
+        data['position_end'] = self.position_end
+        return data
 

@@ -14,3 +14,14 @@ class Official(Member):
 
     def schedule_meeting(self, meeting_time: str):
         return f"Official {self.name} has scheduled a meeting at {meeting_time}"
+
+
+    # Override the base to_dict method to include the additional fields specific to an Official
+    def to_dict(self):
+
+        data = super().to_dict()  # Base dictionary data from Member.to_dict()
+
+        # Add Official-specific attributes
+        data['role'] = self.role
+        data['department'] = self.department
+        return data
