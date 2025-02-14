@@ -1,7 +1,7 @@
 
 import tkinter as tk
 from tkinter import ttk, messagebox
-from member import Member, add_member
+from member import Member
 from official import Official
 from board import Board
 
@@ -128,7 +128,7 @@ class MemberTab(ttk.Frame):
             else:
                 raise ValueError("Unknown member type selected.")
 
-            add_member(new_member)
+            Member.add_member(new_member)  # Use the class method on Member
             messagebox.showinfo("Success", f"{member_type} created successfully!")
             self.clear_fields()
         except Exception as e:
