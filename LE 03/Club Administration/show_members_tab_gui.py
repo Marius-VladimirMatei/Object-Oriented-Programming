@@ -1,7 +1,8 @@
 
 import tkinter as tk
 from tkinter import ttk, messagebox
-from member import show_all_members
+from member import Member
+
 
 class ShowMembersTab(ttk.Frame):
     def __init__(self, parent):
@@ -13,7 +14,7 @@ class ShowMembersTab(ttk.Frame):
 
     def refresh_members(self):
         try:
-            members_text = show_all_members()
+            members_text = Member.show_all_members()  # Use the class method
             self.text_area.delete("1.0", tk.END)
             self.text_area.insert(tk.END, members_text)
         except Exception as e:
