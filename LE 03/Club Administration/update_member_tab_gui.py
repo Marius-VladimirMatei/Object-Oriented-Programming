@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
-from member import load_members, update_member_in_file, Member
+from member import Member
 from official import Official
 from board import Board
 
@@ -47,7 +47,7 @@ class UpdateMemberTab(ttk.Frame):
             messagebox.showerror("Error", "Please enter a valid numeric ID.")
             return
         member_id = int(member_id_str)
-        members = load_members()
+        members = Member.load_members()
         member_data = next((m for m in members if m.get("id") == member_id), None)
         if not member_data:
             messagebox.showerror("Error", f"No member found with ID {member_id}")
@@ -68,9 +68,7 @@ class UpdateMemberTab(ttk.Frame):
         member_id = self.id_entry.get().strip()
 
         # Determine member type based on the optional fields:
-        # - If "board_position" is filled, treat as Board
-        # - Else if "role" is filled, treat as Official
-        # - Otherwise, regular Member.
+        # - If "board_position" is filled, treat as Board, elif "role" is filled, treat as Official, else regular Member.
         try:
             if data.get("board_position"):
                 updated_member = Board(
@@ -109,7 +107,7 @@ class UpdateMemberTab(ttk.Frame):
                     data.get("join_date"),
                     data.get("membership_status")
                 )
-            update_member_in_file(updated_member)
+            Member.update_member_in_file(updated_member)
             messagebox.showinfo("Success", "Member updated successfully!")
             self.clear_fields()
         except Exception as e:
