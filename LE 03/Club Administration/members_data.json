@@ -1,0 +1,3 @@
+{"id":1,"name":"Albert Einsteinn","address":"Graz 8020","telephone_number":"+43123456789","email_address":"albert@einstein.com","join_date":"12/02/1949","membership_status":"True"}
+{"id":2,"name":"Isaac Newtwon","address":"Wien 1100","telephone_number":"+43321654987","email_address":"isaac@newton.com","join_date":"25/05/1786","membership_status":"False"}
+{"id":3,"name":"Thomas Edison","address":"Salzburg","telephone_number":"+43987456123","email_address":"thomas@edison.com","join_date":"31/08/1796","membership_status":"True","role":"Electrician","department":"Electric","board_position":"CFOO","position_start":"12/07/1788","position_end":"25/11/1790"}
