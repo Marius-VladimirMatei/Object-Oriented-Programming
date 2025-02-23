@@ -1,0 +1,23 @@
+{
+    "BE000099991234": {
+        "account_number": "BE000099991234",
+        "account_holder": "Wouttt van Aert",
+        "balance": 94655.0,
+        "account_type": "debit",
+        "withdrawal_limit": 6000.0
+    },
+    "BE111100009876": {
+        "account_number": "BE111100009876",
+        "account_holder": "Wout van Aert",
+        "balance": 2320809.0,
+        "account_type": "credit",
+        "credit_limit": 25000.0
+    },
+    "AT333377776779": {
+        "account_number": "AT333377776779",
+        "account_holder": "Neuhaus AT",
+        "balance": 63367.0,
+        "account_type": "credit",
+        "credit_limit": 4000.0
+    }
+}
