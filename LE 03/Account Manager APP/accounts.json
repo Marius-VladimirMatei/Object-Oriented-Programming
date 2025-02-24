@@ -4,7 +4,7 @@
         "account_holder": "Wouttt van Aert",
         "balance": 94655.0,
         "account_type": "debit",
-        "withdrawal_limit": 6000.0
+        "withdraw_limit": 6000.0
     },
     "BE111100009876": {
         "account_number": "BE111100009876",
