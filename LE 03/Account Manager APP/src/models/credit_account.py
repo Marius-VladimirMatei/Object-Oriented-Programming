@@ -25,10 +25,6 @@ class CreditAccount(Account):
 
         self._balance -= amount
 
-        # if abs(self._balance - amount) <= self._credit_limit:
-        #     self._balance -= amount
-        # else:
-        #     raise ValueError("Withdrawal would exceed credit limit.")
 
 
     # To dict formats all the attributes of the credit account into a dictionary => serialization for json
