@@ -1,15 +1,16 @@
 import mysql.connector
 from mysql.connector import Error
+import os
 
 
 class Database:
-    def __init__(
-        self,
-        host="localhost",
-        user="root",
-        password="Matei8138",
-        database="account_manager",
-    ):
+    def __init__(self):
+        # get the database credentials from the environment variables instead of hardcoding them
+        host = os.getenv("DATABASE_HOST")
+        user = os.getenv("DATABASE_USER")
+        password = os.getenv("DATABASE_PASSWORD")
+        database = os.getenv("DATABASE_DB")
+
         self.host = host
         self.user = user
         self.password = password
@@ -17,7 +18,6 @@ class Database:
         self.connection = None
         self.cursor = None
         self.connect()
-        print("Database initialized")
         self.create_tables()
 
     def connect(self):
@@ -36,10 +36,8 @@ class Database:
                 # Create database if doesn't exist
                 self.cursor.execute(f"CREATE DATABASE IF NOT EXISTS {self.database}")
                 self.cursor.execute(f"USE {self.database}")
-                print("Connected to the database")
 
         except mysql.connector.Error as e:
-            print(f"Database connection error: {e}")
             raise
 
     def disconnect(self):
@@ -48,9 +46,7 @@ class Database:
                 if hasattr(self, "cursor"):
                     self.cursor.close()
                 self.connection.close()
-                print("Disconnected from the database")
         except mysql.connector.Error as e:
-            print(f"Error while disconnecting: {e}")
             raise
 
     def create_tables(self):
@@ -72,16 +68,13 @@ class Database:
 
             # Commit transaction
             self.connection.commit()
-            print("Tables created successfully")
 
         except mysql.connector.Error as e:
             # Rollback on error
             self.connection.rollback()
-            print(f"Error creating tables: {e}")
             raise
         except Exception as e:
             self.connection.rollback()
-            print(f"Unexpected error: {e}")
             raise
 
     def __del__(self):  # Finalizer function

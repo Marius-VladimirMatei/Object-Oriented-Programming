@@ -188,7 +188,6 @@ class AccountView:
             self.refresh_accounts()
 
     def deposit(self) -> None:
-        print(f"Deposit: {self.amount_var.get()}")
         self.perform_transaction("deposit")
 
     def withdraw(self) -> None:
