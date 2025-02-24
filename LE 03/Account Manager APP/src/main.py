@@ -3,8 +3,7 @@ import tkinter as tk
 from src.views.account_view import AccountView
 
 from src.controllers.account_controller import AccountController
-from src.models.account_manager import AccountManager
-
+from src.models.db_account_manager import DbAccountManager
 
 
 def main():
@@ -13,11 +12,7 @@ def main():
     root.title("Account Management System")
 
     # Initialize MVC components
-    account_manager = AccountManager()
-    try:
-        account_manager = AccountManager.load_accounts("accounts.json")
-    except:
-        pass
+    account_manager = DbAccountManager()
 
     controller = AccountController(account_manager)
     app = AccountView(root, controller)

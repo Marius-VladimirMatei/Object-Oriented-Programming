@@ -1,14 +1,21 @@
-
 from abc import ABC, abstractmethod
 from enum import Enum
 from src.models.validator import AccountValidator
 
+
 class AccountType(str, Enum):
-    CREDIT = 'credit'
-    DEBIT = 'debit'
+    CREDIT = "credit"
+    DEBIT = "debit"
+
 
 class Account(ABC):
-    def __init__(self, account_number: str, account_holder: str, balance: float, account_type: AccountType):
+    def __init__(
+        self,
+        account_number: str,
+        account_holder: str,
+        balance: float,
+        account_type: AccountType,
+    ):
         AccountValidator.validate_string(account_number)
         AccountValidator.validate_string(account_holder)
         AccountValidator.validate_number(balance)
@@ -19,24 +26,22 @@ class Account(ABC):
         self._balance = balance
         self._account_type = account_type
 
-
     def deposit(self, amount):
-        """"Deposit method is common to all accounts"""
+        """ "Deposit method is common to all accounts"""
         AccountValidator.validate_positive_number(amount)
-        self._balance +=amount
+        self._balance += amount
 
     def get_balance(self):
-        """"Deposit method is common to all accounts"""
+        """ "Deposit method is common to all accounts"""
         return self._balance
 
     @abstractmethod
     def withdraw(self, amount):
-        """ Withdraw method is different for each type of account, hence is different. """
+        """Withdraw method is different for each type of account, hence is different."""
         pass
-
 
     @abstractmethod
     def to_dict(self):
-        """ To dict method is different for each type of account, hence it is abstract.
-               (each account type has different attributes) """
+        """To dict method is different for each type of account, hence it is abstract.
+        (each account type has different attributes)"""
         pass
