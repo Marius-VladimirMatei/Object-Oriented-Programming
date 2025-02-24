@@ -25,7 +25,7 @@ class AccountManager:
             account._credit_limit = new_limit
         else:
             account: DebitAccount = account
-            account._withdrawal_limit = new_limit
+            account._withdraw_limit = new_limit
 
     # to do: remove account, update account???
 
@@ -50,7 +50,7 @@ class AccountManager:
                                   account["credit_limit"])
             else:
                 a = DebitAccount(account["account_number"], account["account_holder"], account["balance"],
-                                 account["withdrawal_limit"])
+                                 account["withdraw_limit"])
 
             am.add_account(a)  # Add the account to the AccountManager instance
 

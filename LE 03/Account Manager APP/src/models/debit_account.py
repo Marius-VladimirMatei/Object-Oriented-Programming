@@ -4,10 +4,10 @@ from src.models.validator import AccountValidator
 # Debit account class
 # Inherits from Account class.
 class DebitAccount(Account):
-    def __init__(self, account_number: str, account_holder: str, balance: float, withdrawal_limit: float):
+    def __init__(self, account_number: str, account_holder: str, balance: float, withdraw_limit: float):
         super().__init__(account_number, account_holder, balance, AccountType.DEBIT)
-        AccountValidator.validate_positive_number(withdrawal_limit)
-        self._withdrawal_limit = withdrawal_limit
+        AccountValidator.validate_positive_number(withdraw_limit)
+        self._withdraw_limit = withdraw_limit
 
     # Withdraw is implemented specifically for debit accounts.
     def withdraw(self, amount):
@@ -26,5 +26,5 @@ class DebitAccount(Account):
             'account_holder': self._account_holder,
             'balance': self._balance,
             'account_type': self._account_type,
-            'withdrawal_limit': self._withdrawal_limit
+            'withdraw_limit': self._withdraw_limit
         }

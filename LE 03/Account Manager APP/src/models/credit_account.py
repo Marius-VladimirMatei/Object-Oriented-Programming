@@ -19,9 +19,9 @@ class CreditAccount(Account):
     def withdraw(self, amount):
         AccountValidator.validate_positive_number(amount)
 
-        # Check if withdrawal would exceed available credit (balance + credit limit)
+        # Check if withdraw would exceed available credit (balance + credit limit)
         if (self._balance -amount) < - self._credit_limit:
-            raise ValueError("Withdrawal would exceed credit limit.")
+            raise ValueError("Withdraw would exceed credit limit.")
 
         self._balance -= amount
 
