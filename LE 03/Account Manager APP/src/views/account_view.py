@@ -118,7 +118,7 @@ class AccountView:
         # Repopulate with current accounts
         accounts = self.controller.get_accounts()
         for account in accounts.values():
-            limit = account._credit_limit if account._account_type == AccountType.CREDIT else account._withdrawal_limit
+            limit = account._credit_limit if account._account_type == AccountType.CREDIT else account._withdraw_limit
             self.tree.insert('', tk.END, values=(
                 account._account_number,
                 account._account_holder,
@@ -203,7 +203,7 @@ class AccountView:
             if (search_term in account._account_number.lower() or
                     search_term in str(account._account_type.value).lower() or
                     search_term in account._account_holder.lower()):
-                limit = account._credit_limit if hasattr(account, '_credit_limit') else account._withdrawal_limit
+                limit = account._credit_limit if hasattr(account, '_credit_limit') else account._withdraw_limit
                 self.tree.insert('', 'end', values=(
                     account._account_number,
                     account._account_holder,

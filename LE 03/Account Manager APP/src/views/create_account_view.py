@@ -51,8 +51,8 @@ class CreateAccountView:
         self.initial_balance = tk.StringVar()
         ttk.Entry(form_frame, textvariable=self.initial_balance).grid(row=3, column=1, padx=5, pady=5, sticky="ew")
 
-        # Credit/Withdrawal Limit
-        self.limit_label = ttk.Label(form_frame, text="Withdrawal Limit:")
+        # Credit/Withdraw Limit
+        self.limit_label = ttk.Label(form_frame, text="Withdraw Limit:")
         self.limit_label.grid(row=4, column=0, padx=5, pady=5, sticky="w")
         self.limit = tk.StringVar()
         ttk.Entry(form_frame, textvariable=self.limit).grid(row=4, column=1, padx=5, pady=5, sticky="ew")
@@ -66,7 +66,7 @@ class CreateAccountView:
         ttk.Button(submit_frame, text="Create Account", command=self.create_account).pack()
 
     def update_limit_label(self, *args: Any) -> None:
-        limit_type = "Credit Limit:" if self.account_type.get() == "credit" else "Withdrawal Limit:"
+        limit_type = "Credit Limit:" if self.account_type.get() == "credit" else "Withdraw Limit:"
         self.limit_label.config(text=limit_type)
 
     def create_account(self) -> None:

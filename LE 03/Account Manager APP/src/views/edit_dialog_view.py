@@ -33,10 +33,10 @@ class EditDialog:
         ttk.Label(self.dialog, text="Account Holder:").grid(row=0, column=0, padx=5, pady=5, sticky="w")
         self.holder_var = tk.StringVar(value=self.account._account_holder)
         ttk.Entry(self.dialog, textvariable=self.holder_var).grid(row=0, column=1, padx=5, pady=5, sticky="ew")
-        # Limit (Credit/Withdrawal)
+        # Limit (Credit/Withdraw)
         limit_text = "Credit Limit:" if self.account._account_type == AccountType.CREDIT else "Withdrawal Limit:"
         ttk.Label(self.dialog, text=limit_text).grid(row=1, column=0, padx=5, pady=5, sticky="w")
-        current_limit = self.account._credit_limit if self.account._account_type == AccountType.CREDIT else self.account._withdrawal_limit
+        current_limit = self.account._credit_limit if self.account._account_type == AccountType.CREDIT else self.account._withdraw_limit
         self.limit_var = tk.StringVar(value=str(current_limit))
         ttk.Entry(self.dialog, textvariable=self.limit_var).grid(row=1, column=1, padx=5, pady=5, sticky="ew")
 
