@@ -1,6 +1,7 @@
 import tkinter as tk
 
 from src.views.account_view import AccountView
+
 from src.controllers.account_controller import AccountController
 from src.models.account_manager import AccountManager
 
