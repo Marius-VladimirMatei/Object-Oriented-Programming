@@ -1,0 +1,46 @@
+{
+    "1": {
+        "id": "1",
+        "name": "The Beatles"
+    },
+    "2": {
+        "id": "2",
+        "name": "Queen"
+    },
+    "3": {
+        "id": "3",
+        "name": "Michael Jackson"
+    },
+    "4": {
+        "id": "4",
+        "name": "Led Zeppelin"
+    },
+    "5": {
+        "id": "5",
+        "name": "Pink Floyd"
+    },
+    "6": {
+        "id": "6",
+        "name": "Metallica"
+    },
+    "7": {
+        "id": "7",
+        "name": "David Bowie"
+    },
+    "8": {
+        "id": "8",
+        "name": "Rolling Stones"
+    },
+    "9": {
+        "id": "9",
+        "name": "Deep Purple"
+    },
+    "10": {
+        "id": "10",
+        "name": "AC/DC"
+    },
+    "11": {
+        "id": "11",
+        "name": "Eagles"
+    }
+}
