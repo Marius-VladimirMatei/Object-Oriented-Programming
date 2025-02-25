@@ -34,5 +34,13 @@
     "9": {
         "id": "9",
         "name": "Deep Purple"
+    },
+    "10": {
+        "id": "10",
+        "name": "AC/DC"
+    },
+    "11": {
+        "id": "11",
+        "name": "eagles"
     }
 }

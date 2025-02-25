@@ -137,6 +137,10 @@ class AlbumView(tk.Frame):
         # insert track into tracks_tree
 
         for track_id in a._track_list:
+            # Skip if track doesn't exist anymore
+            if str(track_id) not in self._track_controller._track:
+                continue
+
             track = self._track_controller._track[str(track_id)]
             # Get artist name
             artist_name = "Unknown"
