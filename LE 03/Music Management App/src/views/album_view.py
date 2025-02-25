@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox
 from src.controllers.album_controller import AlbumController
 from src.models.album import Album
 from src.controllers.track_controller import TrackController
@@ -209,6 +209,14 @@ class AlbumView(tk.Frame):
 
         # Get the album ID
         album_id = self.albums_tree.item(selected_items, "values")[0]
+
+        # Show confirmation dialog
+        confirm = messagebox.askyesno(
+            "Delete Album", "Are you sure you want to delete this album?"
+        )
+
+        if not confirm:
+            return
 
         # Delete the album
         try:

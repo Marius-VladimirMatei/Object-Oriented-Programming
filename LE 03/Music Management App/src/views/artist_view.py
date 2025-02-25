@@ -68,6 +68,14 @@ class ArtistView(tk.Frame):
         # Get the artist ID
         artist_id = self.tree.item(selected_item, "values")[0]
 
+        # Show confirmation dialog
+        confirm = messagebox.askyesno(
+            "Delete Artist", "Are you sure you want to delete this artist?"
+        )
+
+        if not confirm:
+            return
+
         # Delete the artist
         try:
             self._artist_controller.delete_artist(artist_id)
