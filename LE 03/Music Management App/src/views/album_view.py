@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox
 from src.controllers.album_controller import AlbumController
 from src.models.album import Album
 from src.controllers.track_controller import TrackController
@@ -137,6 +137,10 @@ class AlbumView(tk.Frame):
         # insert track into tracks_tree
 
         for track_id in a._track_list:
+            # Skip if track doesn't exist anymore
+            if str(track_id) not in self._track_controller._track:
+                continue
+
             track = self._track_controller._track[str(track_id)]
             # Get artist name
             artist_name = "Unknown"
@@ -209,6 +213,14 @@ class AlbumView(tk.Frame):
 
         # Get the album ID
         album_id = self.albums_tree.item(selected_items, "values")[0]
+
+        # Show confirmation dialog
+        confirm = messagebox.askyesno(
+            "Delete Album", "Are you sure you want to delete this album?"
+        )
+
+        if not confirm:
+            return
 
         # Delete the album
         try:

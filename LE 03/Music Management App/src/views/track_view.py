@@ -110,6 +110,14 @@ class TrackView(tk.Frame):
         # Get the track ID
         track_id = self.tree.item(selected_item, "values")[0]
 
+        # Show confirmation dialog
+        confirm = messagebox.askyesno(
+            "Delete track", "Are you sure you want to delete this track?"
+        )
+
+        if not confirm:
+            return
+
         # Delete the track
         try:
             self._track_controller.delete_track(track_id)

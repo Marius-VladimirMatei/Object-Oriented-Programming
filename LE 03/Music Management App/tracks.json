@@ -53,16 +53,10 @@
         "duration_seconds": 230,
         "artist_id": "10"
     },
-    "10": {
-        "id": "10",
-        "name": "Beat it",
-        "duration_seconds": 295,
-        "artist_id": "3"
-    },
     "11": {
         "id": "11",
-        "name": "Billie Jean",
-        "duration_seconds": 403,
-        "artist_id": "3"
+        "name": "Enter Sandman",
+        "duration_seconds": 355,
+        "artist_id": "6"
     }
 }

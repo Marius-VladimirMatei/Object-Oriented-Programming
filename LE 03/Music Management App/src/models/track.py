@@ -2,9 +2,10 @@ from src.models.base_model import BaseModel
 from src.models.validator import Validator
 from typing import Dict
 
+
 class Track(BaseModel):
     def __init__(self, id: str, name: str, duration_seconds: int, artist_id: str):
-        super(). __init__(id, name)
+        super().__init__(id, name)
         self._duration_seconds = Validator.validate_number(duration_seconds)
         self._artist_id = Validator.validate_string(artist_id)
 
@@ -29,5 +30,3 @@ class Track(BaseModel):
             dict["duration_seconds"],
             dict["artist_id"],
         )
-
-

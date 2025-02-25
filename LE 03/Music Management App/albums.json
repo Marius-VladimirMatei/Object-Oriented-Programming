@@ -11,24 +11,47 @@
     },
     "2": {
         "id": "2",
-        "name": "Thriller",
-        "year": 1982,
-        "artist_id": "3",
+        "name": "A night at the Opera",
+        "year": 1975,
+        "artist_id": "2",
         "track_list": [
-            "10",
-            "11"
+            "2",
+            "7"
         ]
     },
     "3": {
         "id": "3",
-        "name": "Queen",
-        "year": 1986,
-        "artist_id": "2",
+        "name": "Another brick in the wall",
+        "year": 1979,
+        "artist_id": "5",
         "track_list": [
-            "2",
-            "4",
+            "3",
+            "7",
+            "9",
+            "10"
+        ]
+    },
+    "4": {
+        "id": "4",
+        "name": "Master of puppets",
+        "year": 1986,
+        "artist_id": "6",
+        "track_list": [
             "5",
-            "7"
+            "7",
+            "11",
+            "12"
+        ]
+    },
+    "5": {
+        "id": "5",
+        "name": "EAGLESS",
+        "year": 1888,
+        "artist_id": "11",
+        "track_list": [
+            "5",
+            "6",
+            "10"
         ]
     }
 }
