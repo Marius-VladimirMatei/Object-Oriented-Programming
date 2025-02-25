@@ -1,0 +1,34 @@
+{
+    "1": {
+        "id": "1",
+        "name": "Abbey Road",
+        "year": 1969,
+        "artist_id": "1",
+        "track_list": [
+            "1",
+            "7"
+        ]
+    },
+    "2": {
+        "id": "2",
+        "name": "Thriller",
+        "year": 1982,
+        "artist_id": "3",
+        "track_list": [
+            "10",
+            "11"
+        ]
+    },
+    "3": {
+        "id": "3",
+        "name": "Queen",
+        "year": 1986,
+        "artist_id": "2",
+        "track_list": [
+            "2",
+            "4",
+            "5",
+            "7"
+        ]
+    }
+}
