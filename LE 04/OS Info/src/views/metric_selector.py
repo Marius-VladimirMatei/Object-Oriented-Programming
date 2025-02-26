@@ -3,17 +3,9 @@ from tkinter import ttk
 
 
 class MetricSelector:
-    """
-    Component for selecting metrics to export.
-    """
+    # Section designed for selecting metrics to export.
 
     def __init__(self, parent):
-        """
-        Initialize the MetricSelector.
-
-        Args:
-            parent: Parent widget
-        """
         # Create selection frame
         self.frame = ttk.LabelFrame(parent, text="Select Metrics to Export")
 
@@ -39,6 +31,8 @@ class MetricSelector:
         performance_metrics = [
             "CPU Frequency",
             "CPU Usage",
+            "Total RAM",
+            "RAM Usage",
             "Total Disk Space",
             "Disk Usage",
         ]
@@ -58,25 +52,18 @@ class MetricSelector:
         )
 
     def select_all(self):
-        """Select all metrics."""
+        # Select all metrics
         for var in self.selected_metrics.values():
             var.set(True)
 
     def deselect_all(self):
-        """Deselect all metrics."""
+        # Deselect all metrics
         for var in self.selected_metrics.values():
             var.set(False)
 
     def is_selected(self, metric_name):
-        """
-        Check if a metric is selected.
+        # Check if a metric is selected.
 
-        Args:
-            metric_name (str): Name of the metric
-
-        Returns:
-            bool: True if selected, False otherwise
-        """
         return (
             metric_name in self.selected_metrics
             and self.selected_metrics[metric_name].get()

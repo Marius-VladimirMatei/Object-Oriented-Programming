@@ -3,17 +3,10 @@ from tkinter import ttk
 
 
 class SystemInfoPanel:
-    """
-    Component for displaying system information in a treeview.
-    """
+    # Section designed for displaying system information in a treeview
+    # System Info Panel
 
     def __init__(self, parent):
-        """
-        Initialize the SystemInfoPanel.
-
-        Args:
-            parent: Parent widget
-        """
         # Create content frame for data display
         self.frame = ttk.LabelFrame(parent, text="System Information")
 
@@ -44,12 +37,6 @@ class SystemInfoPanel:
         self.scrollbar.grid(row=0, column=1, sticky="ns")
 
     def update_metrics(self, metrics):
-        """
-        Update the metrics displayed in the treeview.
-
-        Args:
-            metrics (list): List of SystemMetric objects
-        """
         # Clear existing items
         for item in self.tree.get_children():
             self.tree.delete(item)
@@ -59,12 +46,8 @@ class SystemInfoPanel:
             self.tree.insert("", "end", values=(metric.name, metric.value))
 
     def get_all_data(self):
-        """
-        Get all data currently in the treeview.
+        # Get all data currently in the treeview in the list form [metric_name, value] pairs
 
-        Returns:
-            list: List of [metric_name, value] pairs
-        """
         data = []
         for item_id in self.tree.get_children():
             values = self.tree.item(item_id, "values")

@@ -5,19 +5,11 @@ from src.views.info_panel import SystemInfoPanel
 from src.views.metric_selector import MetricSelector
 from src.views.control_panel import ControlPanel
 
+# Main application view that integrates all UI components.
+
 
 class SystemView(tk.Frame):
-    """
-    Main application view that integrates all UI components.
-    """
-
     def __init__(self, master=None) -> None:
-        """
-        Initialize the SystemView.
-
-        Args:
-            master: Parent widget
-        """
         super().__init__(master)
 
         # Configure the frame to be responsive
@@ -47,19 +39,20 @@ class SystemView(tk.Frame):
         self.schedule_update()
 
     def refresh_metrics(self):
-        """Update metrics display."""
+        # Update metrics displayed in the system info panel
         metrics = self.controller.get_system_metrics()
+
         self.system_info.update_metrics(metrics)
 
     def schedule_update(self):
-        """Schedule periodic updates."""
+        #   Schedule periodic updates
         self.refresh_metrics()
         self.after(1000, self.schedule_update)
 
     def export_data(self):
-        """Export selected system information to a CSV file."""
+        # Export selected system information to a CSV file
         # Get data from the system info panel
         data = self.system_info.get_all_data()
 
-        # Export using the controller
+        # Pass data and selection function to controller and export using the controller
         self.controller.export_data(data, self.metric_selector.is_selected)
