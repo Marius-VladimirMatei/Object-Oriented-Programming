@@ -13,8 +13,12 @@ class BaseModel(ABC):
         """Convert object to dictionary for storage"""
         pass
 
-    @abstractmethod
+        # abstract method inusres child class will implement this method
+        # classmethod makes it possible to call the method on the class itself rather than an instance of the class
+        # classmethod is used because implements before the instance is created
+
     @classmethod
+    @abstractmethod
     def from_dict(cls, data):
         """Create object from dictionary"""
         pass

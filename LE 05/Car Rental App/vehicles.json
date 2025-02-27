@@ -12,5 +12,12 @@
         "model": "Mondeo",
         "year": 2023,
         "status": "available"
+    },
+    {
+        "id": 3,
+        "make": "Opel",
+        "model": "Corsa",
+        "year": 2014,
+        "status": "available"
     }
 ]
