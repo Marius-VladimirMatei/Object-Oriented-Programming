@@ -39,8 +39,8 @@ class RentalTransaction:
         return transaction
 
     def __str__(self):
-        """String representation of the rental transaction"""
+        # String representation of the rental transaction
         status = (
             "Active" if self.return_date is None else f"Returned on {self.return_date}"
         )
-        return f"Rental ID: {self.id}, Customer ID: {self.customer_id}, Vehicle ID: {self.vehicle_id}, {status}"
+        return f"Rental ID: {self.id}, Customer ID: {self.customer_id}, Vehicle ID: {self.vehicle_id}, Start Date: {self.start_date}, End Date: {self.end_date}, {status}"
