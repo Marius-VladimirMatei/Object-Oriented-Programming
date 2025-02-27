@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "name": "John",
+        "email": "john@car.at",
+        "telephone": "+43123456789",
+        "address": "Graz"
+    }
+]

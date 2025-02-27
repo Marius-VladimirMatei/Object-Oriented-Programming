@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "customer_id": 1,
+        "vehicle_id": 1,
+        "start_date": "27-02-2025",
+        "end_date": "12-03-2025",
+        "return_date": "27-02-2025"
+    },
+    {
+        "id": 2,
+        "customer_id": 1,
+        "vehicle_id": 1,
+        "start_date": "27-02-2025",
+        "end_date": "15-03-2025",
+        "return_date": "27-02-2025"
+    },
+    {
+        "id": 3,
+        "customer_id": 1,
+        "vehicle_id": 1,
+        "start_date": "27-02-2025",
+        "end_date": "14-05-2025",
+        "return_date": null
+    }
+]
