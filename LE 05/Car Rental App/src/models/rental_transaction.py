@@ -1,9 +1,10 @@
-from datetime import datetime
+from src.models.base_model import BaseModel
 
 
-class RentalTransaction:
+class RentalTransaction(BaseModel):
     def __init__(self, rental_id, customer_id, vehicle_id, start_date, end_date):
-        self.id = rental_id
+        super().__init__(rental_id)
+
         self.customer_id = customer_id
         self.vehicle_id = vehicle_id
         self.start_date = start_date

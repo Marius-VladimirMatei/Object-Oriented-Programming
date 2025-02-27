@@ -1,10 +1,14 @@
-class Vehicle:
+from src.models.base_model import BaseModel
+
+
+class Vehicle(BaseModel):
     def __init__(self, vehicle_id, make, model, year, status="available"):
-        self.id = vehicle_id
+        super().__init__(vehicle_id)
+
         self.make = make
         self.model = model
         self.year = year
-        self.status = status  # New attribute for vehicle availability
+        self.status = status
 
     def to_dict(self):
         return {

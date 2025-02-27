@@ -1,6 +1,9 @@
-class Customer:
+from src.models.base_model import BaseModel
+
+
+class Customer(BaseModel):
     def __init__(self, customer_id, name, email, telephone, address):
-        self.id = customer_id
+        super().__init__(customer_id)
         self.name = name
         self.email = email
         self.telephone = telephone
