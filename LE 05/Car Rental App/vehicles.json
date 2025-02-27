@@ -4,6 +4,13 @@
         "make": "Mercedes",
         "model": "G klass",
         "year": 2025,
+        "status": "rented"
+    },
+    {
+        "id": 2,
+        "make": "Ford",
+        "model": "Mondeo",
+        "year": 2023,
         "status": "available"
     }
 ]

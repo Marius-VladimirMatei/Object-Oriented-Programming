@@ -34,20 +34,3 @@ class CustomerController:
     def list_customers(self):
         for customer in self.customers:
             print(customer)
-
-    def add_customer_ui(self):
-        # Interactive UI method to collect customer information and add a customer
-        try:
-            name = input("Enter Customer Name: ")
-            email = input("Enter Customer Email: ")
-            telephone = input("Enter Customer Telephone: ")
-            address = input("Enter Customer Address: ")
-
-            # Auto-increment ID by passing None
-            customer = self.add_customer(name, email, telephone, address)
-            print(f"Customer added successfully!")
-            print(customer)
-            return customer
-        except ValueError as e:
-            print(f"Error: {e}")
-            return None

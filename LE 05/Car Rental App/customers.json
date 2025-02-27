@@ -5,5 +5,12 @@
         "email": "john@car.at",
         "telephone": "+43123456789",
         "address": "Graz"
+    },
+    {
+        "id": 2,
+        "name": "Michael",
+        "email": "michale@wantscar.com",
+        "telephone": "+43987564321",
+        "address": "Graz"
     }
 ]
