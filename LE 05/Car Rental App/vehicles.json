@@ -4,7 +4,7 @@
         "make": "Mercedes",
         "model": "G klass",
         "year": 2025,
-        "status": "rented"
+        "status": "available"
     },
     {
         "id": 2,
@@ -18,6 +18,20 @@
         "make": "Opel",
         "model": "Corsa",
         "year": 2014,
-        "status": "available"
+        "status": "rented"
+    },
+    {
+        "id": 4,
+        "make": "Renault",
+        "model": "Megane",
+        "year": 2015,
+        "status": "rented"
+    },
+    {
+        "id": 5,
+        "make": "Citroen",
+        "model": "C3",
+        "year": 2005,
+        "status": "rented"
     }
 ]

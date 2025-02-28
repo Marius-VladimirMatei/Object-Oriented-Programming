@@ -1,18 +1,18 @@
 from src.models.customer import Customer
 from src.utils.validator import Validator
-import src.persistence.customer_storage as customer_storage
+from src.persistence.storage import Storage
 
 
 class CustomerController:
     def __init__(self, storage_file="customers.json"):
         self.storage_file = storage_file
-        self.customers = customer_storage.load_customers(self.storage_file)
+        self.storage: Storage[Customer] = Storage(self.storage_file, Customer)
 
     def get_next_id(self):
         # Get the highest customer ID and increment by 1
-        if not self.customers:
+        if not self.storage.data:
             return 1
-        return max(customer.id for customer in self.customers) + 1
+        return max(customer.id for customer in self.storage.data) + 1
 
     def add_customer(self, name, email, telephone, address, customer_id=None):
         # Auto-assign ID if not provided or empty
@@ -27,10 +27,10 @@ class CustomerController:
         address = Validator.validate_address(address)
 
         customer = Customer(customer_id, name, email, telephone, address)
-        self.customers.append(customer)
-        customer_storage.save_customers(self.customers, self.storage_file)
+        self.storage.data.append(customer)
+        self.storage.save_data()
         return customer
 
     def list_customers(self):
-        for customer in self.customers:
+        for customer in self.storage.data:
             print(customer)

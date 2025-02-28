@@ -76,7 +76,9 @@ class MenuController:
 
     def handle_list_active_rentals(self):
         print("\nActive Rentals:")
-        active_rentals = [r for r in self.rental_controller.rentals if r.is_active()]
+        active_rentals = [
+            r for r in self.rental_controller.storage.data if r.is_active()
+        ]
         if active_rentals:
             for rental in active_rentals:
                 print(rental)
