@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "name": "John",
+        "email": "john@car.at",
+        "telephone": "+43123456789",
+        "address": "Graz"
+    },
+    {
+        "id": 2,
+        "name": "Michael",
+        "email": "michale@wantscar.com",
+        "telephone": "+43987564321",
+        "address": "Graz"
+    },
+    {
+        "id": 3,
+        "name": "Mark",
+        "email": "mark@car.at",
+        "telephone": "+4578987",
+        "address": "Graz"
+    }
+]
